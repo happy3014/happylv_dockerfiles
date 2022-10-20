@@ -1,8 +1,9 @@
-FROM centos7
+FROM centos:centos8
 
 COPY resources/TencentKona-11.0.16.b2-jdk_linux-x86_64.tar.gz /root/TencentKona-11.0.16.b2-jdk_linux-x86_64.tar.gz
 RUN tar -zxvf /root/TencentKona-11.0.16.b2-jdk_linux-x86_64.tar.gz -C /opt \
-    && mv /opt/TencentKona-11.0.16.b2 /opt/tencent_kona11
+    && mv /opt/TencentKona-11.0.16.b2 /opt/tencent_kona11 \
+    && rm -f /root/TencentKona-11.0.16.b2-jdk_linux-x86_64.tar.gz
 
 ENV JAVA_HOME=/opt/tencent_kona11 \
     PATH=/opt/tencent_kona11/bin:$PATH
